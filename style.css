@@ -37,9 +37,10 @@ body, html {
 .row {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items at the top */
     gap: 20px; /* Space between cards in a row */
     flex-wrap: wrap; /* Allow wrapping to next line */
+    margin-bottom: 20px; /* Space between each row on PC */
 }
 
 /* Each friend section with a pink background */
@@ -185,6 +186,3 @@ h2 {
         margin-top: 20px; /* Space above the volume control */
     }
 }
-
-
-
