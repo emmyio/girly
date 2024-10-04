@@ -8,6 +8,12 @@
     <meta name="description" content="girly">
     <title>∘ ∘ 𐂯</title>
     <link rel="stylesheet" href="style.css"> <!-- Reference to your CSS file -->
+    <script>
+        // Change the URL to not show 'girly.html' when the page loads
+        window.onload = function() {
+            history.pushState(null, '', '/'); // This will set the URL to your main page (index.html)
+        };
+    </script>
 </head>
 <body>
     <!-- Particle Background Container -->
