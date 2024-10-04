@@ -8,10 +8,22 @@
     <meta name="description" content="girly">
     <title>∘ ∘ 𐂯</title>
     <link rel="stylesheet" href="style.css"> <!-- Reference to CSS file -->
-    <script>
+        <script>
+            // Disable right-click context menu
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+    
+            // Prevent F12, Ctrl + Shift + I, and Ctrl + U
+            document.onkeydown = function(e) {
+                if (e.key === "F12" || (e.ctrlKey && (e.key === "i" || e.key === "u"))) {
+                    e.preventDefault();
+                }
+            };
+    
         // Change the URL to not show 'girly.html' when the page loads
         window.onload = function() {
-            history.replaceState(null, '', '/'); 
+            history.replaceState(null, '', '/'); // This will set the URL to your main page
         };
     </script>
 </head>
