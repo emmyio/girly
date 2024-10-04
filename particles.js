@@ -1,25 +1,24 @@
-// Custom configuration for particles.js
 particlesJS("particles-js", {
     particles: {
         number: {
-            value: 80, // Number of particles
+            value: 80,
             density: {
                 enable: true,
-                value_area: 800 // Density area
+                value_area: 800
             }
         },
         color: {
-            value: "#FFB6C1" // Light pink color for particles
+            value: "#FFB6C1"
         },
         shape: {
-            type: "circle", // Shape of the particles
+            type: "circle", 
             stroke: {
                 width: 0,
-                color: "#FFB6C1" // Light pink color for the border
+                color: "#FFB6C1"
             }
         },
         opacity: {
-            value: 0.7, // Opacity of particles
+            value: 0.7, 
             random: false,
             anim: {
                 enable: false,
@@ -29,8 +28,8 @@ particlesJS("particles-js", {
             }
         },
         size: {
-            value: 4, // Size of particles
-            random: true, // Randomize size
+            value: 4,
+            random: true, 
             anim: {
                 enable: false,
                 speed: 40,
@@ -39,19 +38,19 @@ particlesJS("particles-js", {
             }
         },
         line_linked: {
-            enable: false, // Disable line links between particles
+            enable: false, 
             distance: 150,
             color: "#FFB6C1",
             opacity: 0.4,
             width: 1
         },
         move: {
-            enable: true, // Enable particle movement
-            speed: 0.6, // Speed of particle movement
+            enable: true, 
+            speed: 0.6,
             direction: "none",
             random: true,
             straight: false,
-            out_mode: "bounce", // Particles bounce when hitting edges
+            out_mode: "bounce", 
             bounce: true,
             attract: {
                 enable: false,
@@ -65,11 +64,11 @@ particlesJS("particles-js", {
         events: {
             onhover: {
                 enable: true,
-                mode: "repulse" // Particles repulse away when hovered
+                mode: "repulse" 
             },
             onclick: {
                 enable: true,
-                mode: "push" // Add more particles on click
+                mode: "push" 
             },
             resize: true
         },
@@ -92,7 +91,7 @@ particlesJS("particles-js", {
                 duration: 0.4
             },
             push: {
-                particles_nb: 4 // Number of particles to add on click
+                particles_nb: 4
             },
             remove: {
                 particles_nb: 2
