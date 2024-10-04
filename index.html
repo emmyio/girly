@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="Content-Language" content="en">
+    <title>𝜗𝜚</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffe6f2; /* Light pink background */
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            text-transform: lowercase;
+        }
+        .enter-container {
+            text-align: center;
+            position: relative;
+        }
+        .enter-text {
+            color: #FFB6C1; /* Light pink text */
+            font-size: 24px; /* Smaller font size */
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease;
+            overflow: hidden; /* Hide overflow for shine effect */
+        }
+        .enter-text:hover {
+            color: #ff99aa; /* Darker pink on hover */
+        }
+        .enter-text::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -75%;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: skewX(-20deg);
+            transition: all 0.5s ease;
+        }
+        .enter-text:hover::before {
+            left: 125%; /* Move shine effect across text */
+        }
+    </style>
+</head>
+<body>
+    <div class="enter-container">
+        <!-- Clickable "enter" text -->
+        <div class="enter-text" onclick="enterSite()">enter</div>
+    </div>
+    <script>
+        function enterSite() {
+            // Redirect to the main page (index.html)
+            window.location.href = 'girly.html';
+        }
+    </script>
+</body>
+</html>
