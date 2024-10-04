@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #ffe6f2; /* Light pink background */
+            background-color: #ffe6f2;
             font-family: Arial, sans-serif;
             font-size: 18px;
             text-transform: lowercase;
@@ -25,16 +25,16 @@
             position: relative;
         }
         .enter-text {
-            color: #FFB6C1; /* Light pink text */
-            font-size: 24px; /* Smaller font size */
+            color: #FFB6C1;
+            font-size: 24px; 
             cursor: pointer;
             position: relative;
             display: inline-block;
             transition: color 0.3s ease;
-            overflow: hidden; /* Hide overflow for shine effect */
+            overflow: hidden; 
         }
         .enter-text:hover {
-            color: #ff99aa; /* Darker pink on hover */
+            color: #ff99aa; 
         }
         .enter-text::before {
             content: "";
@@ -48,18 +48,16 @@
             transition: all 0.5s ease;
         }
         .enter-text:hover::before {
-            left: 125%; /* Move shine effect across text */
+            left: 125%; 
         }
     </style>
 </head>
 <body>
     <div class="enter-container">
-        <!-- Clickable "enter" text -->
         <div class="enter-text" onclick="enterSite()">enter</div>
     </div>
     <script>
         function enterSite() {
-            // Redirect to the main page (index.html)
             window.location.href = 'girly.html';
         }
     </script>
