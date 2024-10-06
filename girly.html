@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
+    <!-- Meta Information and Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     <meta http-equiv="Content-Language" content="en">
     <meta name="description" content="girly">
     <title>♡</title>
-    <link rel="stylesheet" href="style.css"> 
-        <script>
-            document.addEventListener('contextmenu', function(e) {
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Inline JavaScript for security and user behavior -->
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.onkeydown = function(e) {
+            if (e.key === "F12" || (e.ctrlKey && (e.key === "i" || e.key === "u"))) {
                 e.preventDefault();
-            });
-            document.onkeydown = function(e) {
-                if (e.key === "F12" || (e.ctrlKey && (e.key === "i" || e.key === "u"))) {
-                    e.preventDefault();
-                }
-            };
+            }
+        };
+
         window.onload = function() {
             history.replaceState(null, '', '/');
         };
     </script>
 </head>
+
 <body>
+    <!-- Background Particle Effect -->
     <div id="particles-js"></div>
-    </head>
-<body>
     <div id="particles-js" style="position: absolute; width: 100%; height: 100%; z-index: -1;"></div>
+
+    <!-- Main Container for Friend Sections -->
     <div class="main-container">
+        <!-- First Row of Friends -->
         <div class="row">
+            <!-- Friend: Em -->
             <div class="friend-section" data-friend="em">
                 <div class="friend">
                     <img src="images/em.jpg" alt="em" class="profile-pic">
@@ -42,6 +54,8 @@
                 </div>
                 <audio id="em-audio" src="audio/em.mp3"></audio>
             </div>
+
+            <!-- Friend: Ray -->
             <div class="friend-section" data-friend="ray">
                 <div class="friend">
                     <img src="images/ray.jpg" alt="ray" class="profile-pic">
@@ -54,6 +68,8 @@
                 </div>
                 <audio id="ray-audio" src="audio/ray.mp3"></audio>
             </div>
+
+            <!-- Friend: Mikai -->
             <div class="friend-section" data-friend="mikai">
                 <div class="friend">
                     <img src="images/mikai.jpg" alt="mikai" class="profile-pic">
@@ -67,7 +83,10 @@
                 <audio id="mikai-audio" src="audio/mikai.mp3"></audio>
             </div>
         </div>
+
+        <!-- Second Row of Friends -->
         <div class="row">
+            <!-- Friend: Trist -->
             <div class="friend-section" data-friend="trist">
                 <div class="friend">
                     <img src="images/trist.jpg" alt="trist" class="profile-pic">
@@ -81,6 +100,8 @@
                 </div>
                 <audio id="trist-audio" src="audio/trist.mp3"></audio>
             </div>
+
+            <!-- Friend: Jay -->
             <div class="friend-section" data-friend="jay">
                 <div class="friend">
                     <img src="images/jay.jpg" alt="jay" class="profile-pic">
@@ -93,6 +114,8 @@
                 </div>
                 <audio id="jay-audio" src="audio/jay.mp3"></audio>
             </div>
+
+            <!-- Friend: Alex -->
             <div class="friend-section" data-friend="alex">
                 <div class="friend">
                     <img src="images/alex.jpg" alt="alex" class="profile-pic">
@@ -104,15 +127,17 @@
                 <audio id="alex-audio" src="audio/alex.mp3"></audio>
             </div>
         </div>
-    <script src="particles.min.js"></script>
-    <script src="particles.js"></script>
-    <script src="script.js" defer></script>
-    <div class="volume-control">
+
+        <!-- Volume Control -->
+        <div class="volume-control">
             <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
         </div>
     </div>
-</body>
-</html>
 
+    <!-- External Scripts -->
+    <script src="particles.min.js"></script>
+    <script src="particles.js"></script>
+    <script src="script.js" defer></script>
+</body>
 
 </html>
