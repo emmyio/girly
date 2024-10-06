@@ -1,3 +1,4 @@
+/* Global Styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -10,7 +11,9 @@ body, html {
     font-family: Arial, sans-serif;
     font-size: 14px;
     overflow: hidden;
+    cursor: url('images/cursor.cur'), auto; /* Custom cursor for entire page */
 }
+
 #particles-js {
     position: absolute;
     top: 0;
@@ -19,6 +22,8 @@ body, html {
     height: 100vh; 
     z-index: 0; 
 }
+
+/* Main Container Styling */
 .main-container {
     display: flex;
     flex-direction: column; 
@@ -27,6 +32,8 @@ body, html {
     position: relative;
     padding: 10px; 
 }
+
+/* Row Styling */
 .row {
     display: flex;
     justify-content: center;
@@ -35,23 +42,33 @@ body, html {
     flex-wrap: wrap; 
     margin-bottom: 20px; 
 }
+
+/* Friend Section Styling */
 .friend-section {
-    background-color: rgba(255, 182, 193, 0.2); 
+    background-color: rgba(255, 182, 193, 0.2); /* Light pink background */
     border-radius: 15px;
     padding: 20px;
     width: 180px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.3s ease; 
-    text-align: center; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    text-align: center; /* Center text within cards */
 }
+
 .friend-section:hover {
-    background-color: rgba(255, 182, 193, 0.5); 
+    background-color: rgba(255, 182, 193, 0.5); /* Darker pink on hover */
+    transform: translateY(-5px); /* Slight lift effect */
 }
-h2 {
-    color: #FFB6C1; 
-    text-transform: lowercase;
-    font-size: 18px; 
+
+/* Heading Container Styling */
+.heading-container {
+    position: absolute; /* Keep it positioned relative to the page */
+    top: 120px; /* Lower the heading closer to the main container */
+    width: 100%;
+    text-align: center; /* Center the heading */
+    z-index: 2; /* Keep it above other elements */
 }
+
+/* Profile Picture Styling */
 .profile-pic {
     border-radius: 50%;
     width: 100px;
@@ -59,20 +76,32 @@ h2 {
     border: 3px solid #FFB6C1; 
     margin-bottom: 10px;
 }
+
+/* Typography Styling */
+h2 {
+    color: #FFB6C1; 
+    text-transform: lowercase;
+    font-size: 18px; 
+}
+
+/* Social Icon Styling */
 .social-icons {
     display: flex;
     justify-content: center;
     gap: 10px; 
 }
+
 .social-icons img {
     width: 24px; 
     height: 24px;
     transition: transform 0.3s ease;
 }
+
 .social-icons img:hover {
     transform: scale(1.1); 
 }
-/* Volume Control Container */
+
+/* Volume Control Styling */
 .volume-control {
     position: relative;
     width: 200px; /* Reduced width for a smaller slider */
@@ -82,7 +111,7 @@ h2 {
     margin-top: 30px; /* Adjusted margin for better spacing */
 }
 
-/* Track Styling */
+/* Volume Control Track Styling */
 .volume-control input[type="range"] {
     width: 100%; /* Full width of the container */
     background: #ffc0cb; /* Light pink track color */
@@ -143,7 +172,6 @@ h2 {
     }
 }
 
-
 /* Increase Track Size on Mobile */
 @media (max-width: 600px) {
     .volume-control input[type="range"] {
@@ -151,7 +179,7 @@ h2 {
     }
 }
 
-
+/* Responsive Design Adjustments */
 @media only screen and (max-width: 600px) {
     body, html {
         overflow-y: auto;
@@ -211,75 +239,24 @@ h2 {
         margin-top: 20px;
     }
 }
-/* Apply the custom cursor globally */
-body {
-    cursor: url('images/cursor.cur'), auto; /* Use cursor.cur for the entire webpage */
-}
 
-/* Apply custom cursor globally */
-body {
-    cursor: url('images/cursor.cur'), auto; /* Use cursor.cur for the entire webpage */
-}
-
-/* Apply custom cursor for all interactive elements */
+/* Custom Cursors for Interactive Elements */
 a, a:hover, a:active, a:focus,
 button, .social-icons img, .friend-section,
 input[type="range"] {
-    cursor: url('images/cursor.cur'), auto; /* Use cursorr.cur for interactive elements */
+    cursor: url('images/cursor.cur'), auto; /* Use cursor.cur for interactive elements */
 }
 
-/* Apply custom cursor for the range slider thumb specifically */
-input[type="range"]::-webkit-slider-thumb { /* For Chrome, Safari, and Edge */
+/* Custom Cursor for Range Slider Thumb */
+input[type="range"]::-webkit-slider-thumb, /* Chrome, Safari, and Edge */
+input[type="range"]::-moz-range-thumb, /* Firefox */
+input[type="range"]::-ms-thumb { /* Internet Explorer */
     cursor: url('images/cursor.cur'), auto !important;
 }
 
-input[type="range"]::-moz-range-thumb { /* For Firefox */
+/* Custom Cursor for Range Slider Track */
+input[type="range"]::-webkit-slider-runnable-track, /* Chrome, Safari */
+input[type="range"]::-moz-range-track, /* Firefox */
+input[type="range"]::-ms-track { /* Internet Explorer */
     cursor: url('images/cursor.cur'), auto !important;
-}
-
-input[type="range"]::-ms-thumb { /* For Internet Explorer */
-    cursor: url('images/cursor.cur'), auto !important;
-}
-
-/* Optional: Apply custom cursor to the range track as well */
-input[type="range"]::-webkit-slider-runnable-track { /* Chrome, Safari */
-    cursor: url('images/cursor.cur'), auto !important;
-}
-
-input[type="range"]::-moz-range-track { /* Firefox */
-    cursor: url('images/cursor.cur'), auto !important;
-}
-
-input[type="range"]::-ms-track { /* IE */
-    cursor: url('images/cursor.cur'), auto !important;
-}
-/* Adjust the heading container to position it lower */
-.heading-container {
-    position: absolute; /* Keep it positioned relative to the page */
-    top: 120px; /* Lower the heading closer to the main container */
-    width: 100%;
-    text-align: center; /* Center the heading */
-    z-index: 2; /* Keep it above other elements */
-}
-
-/* Hover effect */
-.it-girls-heading:hover {
-    transform: scale(1.05); /* Slightly increase size */
-    box-shadow: 0 12px 20px rgba(255, 182, 193, 0.3); /* Enhanced shadow */
-}
-
-
-.friend-section {
-    background-color: rgba(255, 182, 193, 0.2); /* Light pink background */
-    border-radius: 15px;
-    padding: 20px;
-    width: 180px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Light shadow */
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
-    text-align: center; /* Center text within cards */
-}
-
-.friend-section:hover {
-    background-color: rgba(255, 182, 193, 0.5); /* Darker pink on hover */
-    transform: translateY(-5px); /* Slight lift effect */
 }
