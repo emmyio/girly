@@ -19,6 +19,10 @@
             font-family: Arial, sans-serif;
             font-size: 18px;
             text-transform: lowercase;
+            cursor: url('images/cursor.cur'), auto;
+        }
+        .enter-text {
+            cursor: url('images/cursorr.cur'), auto;
         }
         .enter-container {
             text-align: center;
@@ -27,7 +31,6 @@
         .enter-text {
             color: #FFB6C1;
             font-size: 24px; 
-            cursor: pointer;
             position: relative;
             display: inline-block;
             transition: color 0.3s ease;
@@ -50,16 +53,89 @@
         .enter-text:hover::before {
             left: 125%; 
         }
+        .heart-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; 
+        }
+        .heart {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFB6C1; 
+            transform: rotate(45deg);
+            animation: burst 1.2s ease-out forwards;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #FFB6C1; 
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -5px;
+            left: 0;
+        }
+        .heart::after {
+            left: -5px;
+            top: 0;
+        }
+        @keyframes burst {
+            0% {
+                opacity: 1;
+                transform: scale(1) translate(0, 0) rotate(45deg);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(1.5) translate(var(--translate-x), var(--translate-y)) rotate(45deg);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="enter-container">
-        <div class="enter-text" onclick="enterSite()">enter</div>
+        <div class="enter-text" onclick="enterSite(event)">enter</div>
     </div>
+    <div class="heart-container"></div>
     <script>
-        function enterSite() {
-            window.location.href = 'girly.html';
+        function enterSite(event) {
+            heartBurst(event.clientX, event.clientY);
+            setTimeout(() => {
+                window.location.href = 'girly.html';
+            }, 1000); 
         }
+        function heartBurst(x, y) {
+            const heartContainer = document.querySelector('.heart-container');
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                const angle = (i * (360 / 10)) * (Math.PI / 180); 
+                const distance = 100; 
+                heart.style.setProperty('--translate-x', `${Math.cos(angle) * distance}px`);
+                heart.style.setProperty('--translate-y', `${Math.sin(angle) * distance}px`);
+
+                heartContainer.appendChild(heart);
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+        }
+        document.addEventListener('contextmenu', (event) => event.preventDefault());
+        document.addEventListener('keydown', (event) => {
+            if (
+                event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'Shift' || event.key === 'i') ||
+                event.key === 'F12'
+            ) {
+                event.preventDefault();
+            }
+        });
+        document.addEventListener('selectstart', (event) => event.preventDefault());
+        document.addEventListener('dragstart', (event) => event.preventDefault());
     </script>
 </body>
 </html>
