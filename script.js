@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Volume Control and Audio Elements
     const volumeControl = document.getElementById('volume');
     const audioElements = document.querySelectorAll('audio');
     let currentAudio = null;
 
-    // Event listener for hovering over each friend section
+    // ==============================
+    // Friend Section Hover Handling
+    // ==============================
     document.querySelectorAll('.friend-section').forEach(section => {
         section.addEventListener('mouseenter', () => {
             const friend = section.getAttribute('data-friend');
@@ -11,16 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Pause and reset the currently playing audio if switching to another
             if (currentAudio && currentAudio !== audioElement) {
-                currentAudio.pause(); 
+                currentAudio.pause();
                 currentAudio.currentTime = 0;
             }
 
+            // Play the new audio and set it as the current audio
             audioElement.play();
             currentAudio = audioElement;
         });
     });
 
-    // Event listener for volume control input changes
+    // ==============================
+    // Volume Control Input Handling
+    // ==============================
     volumeControl.addEventListener('input', (event) => {
         const volume = event.target.value;
         audioElements.forEach(audio => {
@@ -29,19 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==============================
-    // "Come back now!" Feature
+    // "come back ho" Feature
     // ==============================
+    const originalTitle = document.title; // Store the original title of the document
 
-    // Store the original title of the document
-    const originalTitle = document.title;
-
-    // Function to change the title based on visibility
     document.addEventListener("visibilitychange", () => {
+        // Change the title based on visibility state
         if (document.hidden) {
-            document.title = "come back ho"; // Title when user switches tabs or minimizes
+            document.title = "come back ho"; // Title when the user switches tabs or minimizes
         } else {
             document.title = originalTitle; // Restore original title when user returns
         }
     });
 });
-
