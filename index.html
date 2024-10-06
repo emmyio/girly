@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Language" content="en">
     <title>𝜗𝜚</title>
     <style>
+        /* Apply the custom cursor globally */
         body, html {
             margin: 0;
             padding: 0;
@@ -19,11 +20,15 @@
             font-family: Arial, sans-serif;
             font-size: 18px;
             text-transform: lowercase;
-            cursor: url('images/cursor.cur'), auto;
+            cursor: url('images/cursor.cur'), auto; /* Set custom cursor for entire page */
         }
+
+        /* Apply custom cursor to interactive elements */
         .enter-text {
-            cursor: url('images/cursorr.cur'), auto;
+            cursor: url('images/cursor.cur'), auto; /* Custom cursor for the enter button */
         }
+
+        /* Styling for the enter button */
         .enter-container {
             text-align: center;
             position: relative;
@@ -53,17 +58,19 @@
         .enter-text:hover::before {
             left: 125%; 
         }
+
+        /* Heart animation container */
         .heart-container {
             position: absolute;
             width: 100%;
             height: 100%;
-            pointer-events: none; 
+            pointer-events: none; /* Allow clicks through the container */
         }
         .heart {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #FFB6C1; 
+            background-color: #FFB6C1; /* Light pink color */
             transform: rotate(45deg);
             animation: burst 1.2s ease-out forwards;
         }
@@ -72,7 +79,7 @@
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #FFB6C1; 
+            background-color: #FFB6C1; /* Light pink color */
             border-radius: 50%;
         }
         .heart::before {
@@ -99,34 +106,56 @@
     <div class="enter-container">
         <div class="enter-text" onclick="enterSite(event)">enter</div>
     </div>
+
+    <!-- Container for hearts -->
     <div class="heart-container"></div>
+
     <script>
+        /* Redirect to the main page with heart burst effect */
         function enterSite(event) {
+            // Create heart burst effect at the click location
             heartBurst(event.clientX, event.clientY);
+
+            // Navigate to the main page after animation
             setTimeout(() => {
                 window.location.href = 'girly.html';
-            }, 1000); 
+            }, 1000); // Wait for the animation to finish
         }
+
+        /* Function to create a burst of hearts */
         function heartBurst(x, y) {
             const heartContainer = document.querySelector('.heart-container');
+
+            // Create 10 evenly spread hearts
             for (let i = 0; i < 10; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
                 heart.style.left = `${x}px`;
                 heart.style.top = `${y}px`;
-                const angle = (i * (360 / 10)) * (Math.PI / 180); 
-                const distance = 100; 
+
+                // Calculate evenly spaced angle (360 degrees divided by number of hearts)
+                const angle = (i * (360 / 10)) * (Math.PI / 180); // Convert to radians
+
+                // Calculate translation values to disperse hearts smoothly
+                const distance = 100; // Distance of dispersion from center
                 heart.style.setProperty('--translate-x', `${Math.cos(angle) * distance}px`);
                 heart.style.setProperty('--translate-y', `${Math.sin(angle) * distance}px`);
 
                 heartContainer.appendChild(heart);
+
+                // Remove heart from DOM after animation ends
                 heart.addEventListener('animationend', () => {
                     heart.remove();
                 });
             }
         }
+
+        /* Disable right-click context menu */
         document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+        /* Disable common keyboard shortcuts */
         document.addEventListener('keydown', (event) => {
+            // Prevent Ctrl+S, Ctrl+U, Ctrl+Shift+I, and F12
             if (
                 event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'Shift' || event.key === 'i') ||
                 event.key === 'F12'
@@ -134,7 +163,11 @@
                 event.preventDefault();
             }
         });
+
+        /* Disable text selection */
         document.addEventListener('selectstart', (event) => event.preventDefault());
+
+        /* Disable drag and drop */
         document.addEventListener('dragstart', (event) => event.preventDefault());
     </script>
 </body>
