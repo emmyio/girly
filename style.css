@@ -157,3 +157,32 @@ h2 {
         margin-top: 20px; 
     }
 }
+body {
+    cursor: url('images/cursor.cur'), auto; 
+}
+body {
+    cursor: url('images/cursor.cur'), auto;
+}
+a, a:hover, a:active, a:focus,
+button, .social-icons img, .friend-section,
+input[type="range"] {
+    cursor: url('images/cursor.cur'), auto; 
+}
+input[type="range"]::-webkit-slider-thumb { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
+input[type="range"]::-moz-range-thumb { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
+input[type="range"]::-ms-thumb { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
+input[type="range"]::-webkit-slider-runnable-track { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
+input[type="range"]::-moz-range-track { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
+input[type="range"]::-ms-track { 
+    cursor: url('images/cursor.cur'), auto !important;
+}
