@@ -157,32 +157,46 @@ h2 {
         margin-top: 20px; 
     }
 }
+/* Apply the custom cursor globally */
 body {
-    cursor: url('images/cursor.cur'), auto; 
+    cursor: url('images/cursor.cur'), auto; /* Use cursor.cur for the entire webpage */
 }
+
+/* Apply custom cursor globally */
 body {
-    cursor: url('images/cursor.cur'), auto;
+    cursor: url('images/cursor.cur'), auto; /* Use cursor.cur for the entire webpage */
 }
+
+/* Apply custom cursor for all interactive elements */
 a, a:hover, a:active, a:focus,
 button, .social-icons img, .friend-section,
 input[type="range"] {
-    cursor: url('images/cursor.cur'), auto; 
+    cursor: url('images/cursor.cur'), auto; /* Use cursorr.cur for interactive elements */
 }
-input[type="range"]::-webkit-slider-thumb { 
+
+/* Apply custom cursor for the range slider thumb specifically */
+input[type="range"]::-webkit-slider-thumb { /* For Chrome, Safari, and Edge */
     cursor: url('images/cursor.cur'), auto !important;
 }
-input[type="range"]::-moz-range-thumb { 
+
+input[type="range"]::-moz-range-thumb { /* For Firefox */
     cursor: url('images/cursor.cur'), auto !important;
 }
-input[type="range"]::-ms-thumb { 
+
+input[type="range"]::-ms-thumb { /* For Internet Explorer */
     cursor: url('images/cursor.cur'), auto !important;
 }
-input[type="range"]::-webkit-slider-runnable-track { 
+
+/* Optional: Apply custom cursor to the range track as well */
+input[type="range"]::-webkit-slider-runnable-track { /* Chrome, Safari */
     cursor: url('images/cursor.cur'), auto !important;
 }
-input[type="range"]::-moz-range-track { 
+
+input[type="range"]::-moz-range-track { /* Firefox */
     cursor: url('images/cursor.cur'), auto !important;
 }
-input[type="range"]::-ms-track { 
+
+input[type="range"]::-ms-track { /* IE */
     cursor: url('images/cursor.cur'), auto !important;
 }
+
