@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Meta information and Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     <meta http-equiv="Content-Language" content="en">
     <title>୨୧</title>
+
+    <!-- Internal CSS for styles -->
     <style>
-        /* Apply the custom cursor globally */
+        /* Global styling and custom cursor */
         body, html {
             margin: 0;
             padding: 0;
@@ -23,27 +27,30 @@
             cursor: url('images/cursor.cur'), auto; /* Set custom cursor for entire page */
         }
 
-        /* Apply custom cursor to interactive elements */
+        /* Styling for interactive elements */
         .enter-text {
             cursor: url('images/cursor.cur'), auto; /* Custom cursor for the enter button */
         }
 
-        /* Styling for the enter button */
+        /* Container and button styling */
         .enter-container {
             text-align: center;
             position: relative;
         }
+
         .enter-text {
             color: #FFB6C1;
-            font-size: 24px; 
+            font-size: 24px;
             position: relative;
             display: inline-block;
             transition: color 0.3s ease;
-            overflow: hidden; 
+            overflow: hidden;
         }
+
         .enter-text:hover {
-            color: #ff99aa; 
+            color: #ff99aa;
         }
+
         .enter-text::before {
             content: "";
             position: absolute;
@@ -55,8 +62,9 @@
             transform: skewX(-20deg);
             transition: all 0.5s ease;
         }
+
         .enter-text:hover::before {
-            left: 125%; 
+            left: 125%;
         }
 
         /* Heart animation container */
@@ -66,6 +74,7 @@
             height: 100%;
             pointer-events: none; /* Allow clicks through the container */
         }
+
         .heart {
             position: absolute;
             width: 10px;
@@ -74,7 +83,9 @@
             transform: rotate(45deg);
             animation: burst 1.2s ease-out forwards;
         }
-        .heart::before, .heart::after {
+
+        .heart::before,
+        .heart::after {
             content: "";
             position: absolute;
             width: 10px;
@@ -82,14 +93,18 @@
             background-color: #FFB6C1; /* Light pink color */
             border-radius: 50%;
         }
+
         .heart::before {
             top: -5px;
             left: 0;
         }
+
         .heart::after {
             left: -5px;
             top: 0;
         }
+
+        /* Animation for heart burst */
         @keyframes burst {
             0% {
                 opacity: 1;
@@ -102,14 +117,17 @@
         }
     </style>
 </head>
+
 <body>
+    <!-- Main container with enter button -->
     <div class="enter-container">
         <div class="enter-text" onclick="enterSite(event)">enter</div>
     </div>
 
-    <!-- Container for hearts -->
+    <!-- Container for heart animation effects -->
     <div class="heart-container"></div>
 
+    <!-- JavaScript for handling animations and interactions -->
     <script>
         /* Redirect to the main page with heart burst effect */
         function enterSite(event) {
@@ -171,4 +189,5 @@
         document.addEventListener('dragstart', (event) => event.preventDefault());
     </script>
 </body>
+
 </html>
