@@ -4,6 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioElements = document.querySelectorAll('audio');
     let currentAudio = null;
 
+    // Set initial volume for all audio elements to be quieter
+    audioElements.forEach(audio => {
+        audio.volume = 0.2; // Set a lower volume, e.g., 20% of full volume
+    });
+
     // ==============================
     // Friend Section Hover Handling
     // ==============================
@@ -30,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
     volumeControl.addEventListener('input', (event) => {
         const volume = event.target.value;
         audioElements.forEach(audio => {
-            audio.volume = volume;
+            audio.volume = volume; // Set all audio elements to the input volume
         });
     });
 
     // ==============================
-    // "come back ho" Feature
+    // "Come Back Now!" Feature
     // ==============================
     const originalTitle = document.title; // Store the original title of the document
 
