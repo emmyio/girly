@@ -72,89 +72,142 @@ h2 {
 .social-icons img:hover {
     transform: scale(1.1); 
 }
+/* Volume Control Container */
 .volume-control {
     position: relative;
-    width: 200px; 
+    width: 300px; /* Increased width for better visibility */
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
 }
+
+/* Track Styling */
 .volume-control input[type="range"] {
-    width: 100%; 
-    background: #ffb6c1; 
+    width: 100%; /* Full width */
+    background: #ffc0cb; /* Track color - light pink */
     -webkit-appearance: none;
     appearance: none;
-    height: 5px; 
-    border-radius: 5px; 
+    height: 6px; /* Adjust track height */
+    border-radius: 5px; /* Rounded track */
     cursor: pointer;
 }
+
+/* Track Styling for Firefox */
+.volume-control input[type="range"]::-moz-range-track {
+    background: #ffc0cb;
+    height: 6px;
+    border-radius: 5px;
+}
+
+/* Thumb Styling for Chrome, Safari, and Edge */
 .volume-control input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 15px; 
-    height: 15px;
-    background: #ff99aa; 
-    border-radius: 50%; 
+    width: 20px; /* Slightly smaller thumb width */
+    height: 20px; /* Slightly smaller thumb height */
+    background: #ff7f91; /* Thumb color - darker pink */
+    border: 2px solid #ffc0cb; /* Border color matching track */
+    border-radius: 50%; /* Circular thumb */
     cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
+
+/* Thumb Styling for Firefox */
 .volume-control input[type="range"]::-moz-range-thumb {
-    width: 15px; 
-    height: 15px;
-    background: #ff99aa; 
-    border-radius: 50%; 
+    width: 20px;
+    height: 20px;
+    background: #ff7f91;
+    border: 2px solid #ffc0cb;
+    border-radius: 50%;
     cursor: pointer;
 }
+
+/* Thumb Styling for IE */
+.volume-control input[type="range"]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #ff7f91;
+    border: 2px solid #ffc0cb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Increase Thumb Size for Better Visibility on Touch Devices */
+@media (pointer: coarse) {
+    .volume-control input[type="range"]::-webkit-slider-thumb,
+    .volume-control input[type="range"]::-moz-range-thumb,
+    .volume-control input[type="range"]::-ms-thumb {
+        width: 24px; /* Larger thumb for easier touch control */
+        height: 24px;
+    }
+}
+
+/* Increase Track Size on Mobile */
+@media (max-width: 600px) {
+    .volume-control input[type="range"] {
+        height: 8px; /* Slightly taller track */
+    }
+}
+
+
 @media only screen and (max-width: 600px) {
     body, html {
-        overflow-y: auto; 
+        overflow-y: auto;
         height: auto;
-        margin: 0; 
-        padding: 0; 
+        margin: 0;
+        padding: 0;
     }
+
     .main-container {
-        padding: 10px; 
-        display: flex; 
-        flex-direction: column; 
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        height: auto; 
-        overflow-y: auto; 
+        height: auto;
+        overflow-y: auto; /* Allow scrolling */
     }
+
     .row {
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 100%;
         margin-bottom: 20px;
     }
+
     .friend-section {
-        width: 80%;
+        width: 80%; /* Full width on mobile */
         margin-bottom: 20px;
         background-color: rgba(255, 182, 193, 0.2);
-        padding: 15px; 
-        border-radius: 15px; 
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        height: auto; 
-        min-height: 120px;
+        height: auto;
+        min-height: 120px; /* Minimum height */
     }
+
     .profile-pic {
-        width: 60px; 
-        height: 60px; 
+        width: 60px; /* Smaller size */
+        height: 60px;
     }
+
     h2 {
-        font-size: 14px;
+        font-size: 14px; /* Smaller font */
     }
+
     .social-icons img {
-        width: 18px; 
+        width: 18px;
         height: 18px;
     }
+
     .volume-control {
         width: 90%;
-        margin-top: 20px; 
+        margin-top: 20px;
     }
 }
 /* Apply the custom cursor globally */
@@ -199,5 +252,33 @@ input[type="range"]::-moz-range-track { /* Firefox */
 input[type="range"]::-ms-track { /* IE */
     cursor: url('images/cursor.cur'), auto !important;
 }
+/* Adjust the heading container to position it lower */
+.heading-container {
+    position: absolute; /* Keep it positioned relative to the page */
+    top: 120px; /* Lower the heading closer to the main container */
+    width: 100%;
+    text-align: center; /* Center the heading */
+    z-index: 2; /* Keep it above other elements */
+}
+
+/* Hover effect */
+.it-girls-heading:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 12px 20px rgba(255, 182, 193, 0.3); /* Enhanced shadow */
+}
 
 
+.friend-section {
+    background-color: rgba(255, 182, 193, 0.2); /* Light pink background */
+    border-radius: 15px;
+    padding: 20px;
+    width: 180px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Light shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    text-align: center; /* Center text within cards */
+}
+
+.friend-section:hover {
+    background-color: rgba(255, 182, 193, 0.5); /* Darker pink on hover */
+    transform: translateY(-5px); /* Slight lift effect */
+}
