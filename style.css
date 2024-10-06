@@ -75,73 +75,74 @@ h2 {
 /* Volume Control Container */
 .volume-control {
     position: relative;
-    width: 300px; /* Increased width for better visibility */
+    width: 200px; /* Reduced width for a smaller slider */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px; /* Adjusted margin for better spacing */
 }
 
 /* Track Styling */
 .volume-control input[type="range"] {
-    width: 100%; /* Full width */
-    background: #ffc0cb; /* Track color - light pink */
-    -webkit-appearance: none;
+    width: 100%; /* Full width of the container */
+    background: #ffc0cb; /* Light pink track color */
+    -webkit-appearance: none; /* Remove default browser styling */
     appearance: none;
-    height: 6px; /* Adjust track height */
-    border-radius: 5px; /* Rounded track */
-    cursor: pointer;
+    height: 4px; /* Reduced height for a smaller track */
+    border-radius: 3px; /* Rounded track */
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
 /* Track Styling for Firefox */
 .volume-control input[type="range"]::-moz-range-track {
     background: #ffc0cb;
-    height: 6px;
-    border-radius: 5px;
+    height: 4px; /* Reduced height for Firefox */
+    border-radius: 3px; /* Rounded track */
 }
 
 /* Thumb Styling for Chrome, Safari, and Edge */
 .volume-control input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px; /* Slightly smaller thumb width */
-    height: 20px; /* Slightly smaller thumb height */
-    background: #ff7f91; /* Thumb color - darker pink */
-    border: 2px solid #ffc0cb; /* Border color matching track */
+    width: 12px; /* Smaller thumb size */
+    height: 12px; /* Smaller thumb size */
+    background: #ff7f91; /* Darker pink for contrast */
+    border: 2px solid #ffc0cb; /* Light pink border */
     border-radius: 50%; /* Circular thumb */
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    cursor: pointer; /* Pointer cursor on thumb */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 /* Thumb Styling for Firefox */
 .volume-control input[type="range"]::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #ff7f91;
-    border: 2px solid #ffc0cb;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 12px; /* Smaller thumb size */
+    height: 12px; /* Smaller thumb size */
+    background: #ff7f91; /* Darker pink for contrast */
+    border: 2px solid #ffc0cb; /* Light pink border */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer; /* Pointer cursor on thumb */
 }
 
-/* Thumb Styling for IE */
+/* Thumb Styling for Internet Explorer */
 .volume-control input[type="range"]::-ms-thumb {
-    width: 20px;
-    height: 20px;
-    background: #ff7f91;
-    border: 2px solid #ffc0cb;
-    border-radius: 50%;
-    cursor: pointer;
+    width: 12px; /* Smaller thumb size */
+    height: 12px; /* Smaller thumb size */
+    background: #ff7f91; /* Darker pink for contrast */
+    border: 2px solid #ffc0cb; /* Light pink border */
+    border-radius: 50%; /* Circular thumb */
+    cursor: pointer; /* Pointer cursor on thumb */
 }
 
-/* Increase Thumb Size for Better Visibility on Touch Devices */
+/* Mobile and Touch Devices: Increase Thumb Size */
 @media (pointer: coarse) {
     .volume-control input[type="range"]::-webkit-slider-thumb,
     .volume-control input[type="range"]::-moz-range-thumb,
     .volume-control input[type="range"]::-ms-thumb {
-        width: 24px; /* Larger thumb for easier touch control */
-        height: 24px;
+        width: 16px; /* Slightly larger thumb for touch controls */
+        height: 16px;
     }
 }
+
 
 /* Increase Track Size on Mobile */
 @media (max-width: 600px) {
