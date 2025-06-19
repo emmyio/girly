@@ -1,193 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Meta information and Title -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
-    <meta http-equiv="Content-Language" content="en">
-    <title>୨୧</title>
-
-    <!-- Internal CSS for styles -->
-    <style>
-        /* Global styling and custom cursor */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffe6f2;
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            text-transform: lowercase;
-            cursor: url('images/cursor.cur'), auto; /* Set custom cursor for entire page */
-        }
-
-        /* Styling for interactive elements */
-        .enter-text {
-            cursor: url('images/cursor.cur'), auto; /* Custom cursor for the enter button */
-        }
-
-        /* Container and button styling */
-        .enter-container {
-            text-align: center;
-            position: relative;
-        }
-
-        .enter-text {
-            color: #FFB6C1;
-            font-size: 24px;
-            position: relative;
-            display: inline-block;
-            transition: color 0.3s ease;
-            overflow: hidden;
-        }
-
-        .enter-text:hover {
-            color: #ff99aa;
-        }
-
-        .enter-text::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -75%;
-            width: 50%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: skewX(-20deg);
-            transition: all 0.5s ease;
-        }
-
-        .enter-text:hover::before {
-            left: 125%;
-        }
-
-        /* Heart animation container */
-        .heart-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Allow clicks through the container */
-        }
-
-        .heart {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #FFB6C1; /* Light pink color */
-            transform: rotate(45deg);
-            animation: burst 1.2s ease-out forwards;
-        }
-
-        .heart::before,
-        .heart::after {
-            content: "";
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #FFB6C1; /* Light pink color */
-            border-radius: 50%;
-        }
-
-        .heart::before {
-            top: -5px;
-            left: 0;
-        }
-
-        .heart::after {
-            left: -5px;
-            top: 0;
-        }
-
-        /* Animation for heart burst */
-        @keyframes burst {
-            0% {
-                opacity: 1;
-                transform: scale(1) translate(0, 0) rotate(45deg);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1.5) translate(var(--translate-x), var(--translate-y)) rotate(45deg);
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>our vault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+<body class="landing">
+  <div class="starfield"></div>
 
-<body>
-    <!-- Main container with enter button -->
-    <div class="enter-container">
-        <div class="enter-text" onclick="enterSite(event)">enter</div>
+  <div class="wrapper fade-in">
+    <h1 class="title">our vault</h1>
+    <p class="subtitle">a place for us</p>
+    <div class="nav-links">
+      <a href="about.html">about</a>
+      <a href="info.html">info</a>
+      <a href="memories.html">clips</a>
     </div>
-
-    <!-- Container for heart animation effects -->
-    <div class="heart-container"></div>
-
-    <!-- JavaScript for handling animations and interactions -->
-    <script>
-        /* Redirect to the main page with heart burst effect */
-        function enterSite(event) {
-            // Create heart burst effect at the click location
-            heartBurst(event.clientX, event.clientY);
-
-            // Navigate to the main page after animation
-            setTimeout(() => {
-                window.location.href = 'girly.html';
-            }, 1000); // Wait for the animation to finish
-        }
-
-        /* Function to create a burst of hearts */
-        function heartBurst(x, y) {
-            const heartContainer = document.querySelector('.heart-container');
-
-            // Create 10 evenly spread hearts
-            for (let i = 0; i < 10; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.style.left = `${x}px`;
-                heart.style.top = `${y}px`;
-
-                // Calculate evenly spaced angle (360 degrees divided by number of hearts)
-                const angle = (i * (360 / 10)) * (Math.PI / 180); // Convert to radians
-
-                // Calculate translation values to disperse hearts smoothly
-                const distance = 100; // Distance of dispersion from center
-                heart.style.setProperty('--translate-x', `${Math.cos(angle) * distance}px`);
-                heart.style.setProperty('--translate-y', `${Math.sin(angle) * distance}px`);
-
-                heartContainer.appendChild(heart);
-
-                // Remove heart from DOM after animation ends
-                heart.addEventListener('animationend', () => {
-                    heart.remove();
-                });
-            }
-        }
-
-        /* Disable right-click context menu */
-        document.addEventListener('contextmenu', (event) => event.preventDefault());
-
-        /* Disable common keyboard shortcuts */
-        document.addEventListener('keydown', (event) => {
-            // Prevent Ctrl+S, Ctrl+U, Ctrl+Shift+I, and F12
-            if (
-                event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'Shift' || event.key === 'i') ||
-                event.key === 'F12'
-            ) {
-                event.preventDefault();
-            }
-        });
-
-        /* Disable text selection */
-        document.addEventListener('selectstart', (event) => event.preventDefault());
-
-        /* Disable drag and drop */
-        document.addEventListener('dragstart', (event) => event.preventDefault());
-    </script>
+  </div>
 </body>
-
 </html>

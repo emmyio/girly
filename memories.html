@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>memories</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-nav"><a href="index.html">← back</a></div>
+
+  <main class="wrapper">
+    <h1 class="title">clips</h1>
+    <p class="subtitle">search through the chaos</p>
+
+    <input type="text" id="search" placeholder="search by name (em, ray, mikai...)" class="search-bar" />
+
+    <section class="memories-grid" id="memories">
+      <div class="memory-card" data-tags="mikai">
+        <video controls src="media/fiona.mp4"></video>
+        <div class="info-row">
+          <p class="desc">fiona moment</p>
+          <div class="names"><span>mikai</span></div>
+        </div>
+      </div>
+
+      <div class="memory-card" data-tags="ray em">
+        <video controls src="media/rotate bro.mp4"></video>
+        <div class="info-row">
+          <p class="desc">can’t rotate</p>
+          <div class="names"><span>ray</span><span>em</span></div>
+        </div>
+      </div>
+
+      <div class="memory-card" data-tags="mikai">
+        <video controls src="media/shes dead.mp4"></video>
+        <div class="info-row">
+          <p class="desc">death reaction</p>
+          <div class="names"><span>mikai</span></div>
+        </div>
+      </div>
+
+      <div class="memory-card" data-tags="ray">
+        <video controls src="media/ray is blind.mp4"></video>
+        <div class="info-row">
+          <p class="desc">blind wall</p>
+          <div class="names"><span>ray</span></div>
+        </div>
+      </div>
+
+      <div class="memory-card" data-tags="em">
+        <video controls src="media/pita bread.mp4"></video>
+        <div class="info-row">
+          <p class="desc">pita drama</p>
+          <div class="names"><span>em</span></div>
+        </div>
+      </div>
+
+      <div class="memory-card" data-tags="em mikai">
+        <video controls src="media/CHOP.mp4"></video>
+        <div class="info-row">
+          <p class="desc">full chaos</p>
+          <div class="names"><span>em</span><span>mikai</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const searchInput = document.getElementById("search");
+    const memorySection = document.getElementById("memories");
+    const cards = Array.from(document.querySelectorAll(".memory-card"));
+
+    const shuffled = cards
+      .map(card => ({ card, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ card }) => card);
+
+    memorySection.innerHTML = '';
+    shuffled.forEach(card => memorySection.appendChild(card));
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      shuffled.forEach(card => {
+        const tags = card.dataset.tags;
+        card.style.display = tags.includes(value) ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
