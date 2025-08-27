@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>welcome</title>
+<style>
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.welcome {
+  font-size: 0.8em;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #fff;
+  transition: text-shadow 0.3s ease;
+}
+
+/* Hover glow */
+.welcome:hover {
+  text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 16px #fff;
+}
+
+/* Use ::before to show the visual Unicode text */
+.welcome::before {
+  content: "ᓚᘏᗢ";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  filter: blur(4px);
+  opacity: 0.6;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.welcome:hover::before {
+  filter: blur(8px);
+}
+</style>
+</head>
+<body onclick="goToIndex()">
+
+<!-- Use safe Latin text for browser, show fancy text via CSS -->
+<div class="welcome" lang="en" translate="no">welcome</div>
+
+<audio src="audio/song.mp3" autoplay loop></audio>
+
+<script>
+function goToIndex() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
