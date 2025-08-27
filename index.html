@@ -14,7 +14,7 @@ body, html {
   align-items: center;
   background: #000;
   font-family: 'Arial', sans-serif;
-  cursor: pointer;
+  cursor: default; /* only pointer on text */
   overflow: hidden;
 }
 
@@ -26,16 +26,17 @@ body, html {
   color: #fff;
   text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #fff;
   transition: text-shadow 0.3s ease;
+  cursor: pointer; /* pointer only on text */
 }
 
-/* Hover glow */
+/* Hover glow only for welcome text */
 .welcome:hover {
   text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 16px #fff;
 }
 
-/* Use ::before to show the visual Unicode text */
+/* Optional pseudo-element for smooth halo */
 .welcome::before {
-  content: "ᓚᘏᗢ";
+  content: "welcome";
   position: absolute;
   left: 50%;
   top: 50%;
@@ -52,19 +53,17 @@ body, html {
 }
 </style>
 </head>
-<body onclick="goToIndex()">
+<body>
 
-<!-- Use safe Latin text for browser, show fancy text via CSS -->
-<div class="welcome" lang="en" translate="no">welcome</div>
+<div class="welcome" lang="en" translate="no" onclick="goToIndex()">welcome</div>
 
 <audio src="audio/song.mp3" autoplay loop></audio>
 
 <script>
 function goToIndex() {
-  window.location.href = "welcome.html";
+  window.location.href = "index.html";
 }
 </script>
 
 </body>
 </html>
-
