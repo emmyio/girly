@@ -1,23 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>our vault</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body class="landing">
-  <div class="starfield"></div>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>friends hub</title>
+  <style>
+    /* Base */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background: #000;
+      color: #fff;
+      text-transform: lowercase;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-  <div class="wrapper fade-in">
-    <h1 class="title">our vault</h1>
-    <p class="subtitle">a place for us</p>
-    <div class="nav-links">
-      <a href="about.html">about</a>
-      <a href="info.html">info</a>
-      <a href="memories.html">clips</a>
+    /* Bleeding/ambient background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.05), transparent 70%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.03), transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 80%);
+      filter: blur(40px);
+      z-index: -1;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.5em;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #aaa;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 200px);
+      padding: 20px;
+      flex-direction: column;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px; /* spread cards farther apart */
+    }
+
+    .card {
+      background: #111;
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      border: 1px solid #222;
+      width: 140px;
+      transition: transform 0.3s ease, box-shadow 0.6s ease, filter 0.6s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px 8px rgba(255,255,255,0.2), 0 0 50px 15px rgba(255,255,255,0.1);
+      filter: blur(0.5px);
+    }
+
+    .avatar {
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #333;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, box-shadow 0.6s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+
+    .name-status {
+      font-size: 0.85em;
+      margin: 5px 0 10px;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: gray;
+      transition: all 0.3s ease;
+    }
+
+    .links a img {
+      width: 20px;
+      height: 20px;
+      margin: 0 4px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: grayscale(100%);
+    }
+
+    .links a img:hover {
+      transform: scale(1.2);
+      filter: grayscale(0%);
+    }
+
+    /* Volume slider under cards */
+    .volume-slider-container {
+      width: 200px;
+      display: flex;
+      align-items: center;
+      margin-top: 60px;
+      gap: 10px;
+      position: relative;
+    }
+
+    .volume-line {
+      flex-grow: 1;
+      height: 6px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+      border-radius: 3px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05), 0 0 40px rgba(255,255,255,0.03);
+      filter: blur(1.5px);
+    }
+
+    .volume-btn {
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <header>friends hub</header>
+
+  <div class="cards-container">
+    <div class="cards">
+      <!-- em -->
+      <div class="card">
+        <img class="avatar" id="avatar-em" src="" alt="em">
+        <div class="name-status">
+          <span class="name">em</span>
+          <span class="status-dot" id="status-em"></span>
+        </div>
+        <div class="links">
+          <a href="https://instagram.com/emqsn" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+          <a href="https://tiktok.com/@emmy" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+          <a href="https://youtube.com/@em-hi" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+        </div>
+      </div>
+
+      <!-- tee -->
+      <div class="card">
+        <img class="avatar" id="avatar-tee" src="" alt="tee">
+        <div class="name-status">
+          <span class="name">tee</span>
+          <span class="status-dot" id="status-tee"></span>
+        </div>
+        <div class="links">
+          <a href="https://tiktok.com/@ayotrist" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+          <a href="https://instagram.com/tukihanna_" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+
+      <!-- alex -->
+      <div class="card">
+        <img class="avatar" id="avatar-alex" src="" alt="alex">
+        <div class="name-status">
+          <span class="name">alex</span>
+          <span class="status-dot" id="status-alex"></span>
+        </div>
+        <div class="links">
+          <a href="#" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+          <a href="#" target="_blank"><img src="icons/tiktok.png" alt="TikTok"></a>
+        </div>
+      </div>
+
+      <!-- koala -->
+      <div class="card">
+        <img class="avatar" id="avatar-koala" src="" alt="koala">
+        <div class="name-status">
+          <span class="name">koala</span>
+          <span class="status-dot" id="status-koala"></span>
+        </div>
+        <div class="links">
+          <a href="https://instagram.com/ahmed._.benhessou" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Volume slider -->
+    <div class="volume-slider-container">
+      <div class="volume-line" id="volumeLine">
+        <div class="volume-btn" id="volumeBtn"></div>
+      </div>
     </div>
   </div>
+
+  <audio id="song" src="audio/song.mp3" autoplay loop></audio>
+
+  <script>
+    // Discord statuses
+    const friends = [
+      {id: "325815288211963906", name: "em"},
+      {id: "1297502058450259981", name: "tee"},
+      {id: "1297465086553755649", name: "alex"},
+      {id: "1181302270344822844", name: "koala"}
+    ];
+
+    async function loadStatus(friend) {
+      try {
+        const res = await fetch(`https://api.lanyard.rest/v1/users/${friend.id}`);
+        const data = await res.json();
+        if (!data.success) return;
+
+        const user = data.data;
+        const avatarUrl = `https://cdn.discordapp.com/avatars/${friend.id}/${user.discord_user.avatar}.png?size=256`;
+        document.getElementById(`avatar-${friend.name}`).src = avatarUrl;
+
+        const statusEl = document.getElementById(`status-${friend.name}`);
+        let color = "gray";
+        if (user.discord_status === "online") color = "white";
+        if (user.discord_status === "idle") color = "lightgray";
+        if (user.discord_status === "dnd") color = "darkred";
+        if (user.discord_status === "offline" || user.discord_status === "invisible") color
+        = "gray";
+        statusEl.style.backgroundColor = color;
+      } catch(e) { console.log(e); }
+    }
+
+    friends.forEach(loadStatus);
+    setInterval(() => { friends.forEach(loadStatus); }, 30000);
+
+    // Volume slider functionality
+    const song = document.getElementById("song");
+    const volumeBtn = document.getElementById("volumeBtn");
+    const volumeLine = document.getElementById("volumeLine");
+
+    let dragging = false;
+    volumeBtn.addEventListener("mousedown", () => dragging = true);
+    document.addEventListener("mouseup", () => dragging = false);
+    document.addEventListener("mousemove", e => {
+      if (!dragging) return;
+      const rect = volumeLine.getBoundingClientRect();
+      let percent = (e.clientX - rect.left) / rect.width;
+      if(percent < 0) percent = 0;
+      if(percent > 1) percent = 1;
+      volumeBtn.style.left = percent * rect.width + "px";
+      song.volume = percent;
+    });
+
+    // Initialize volume to middle
+    window.addEventListener("load", () => {
+      const rect = volumeLine.getBoundingClientRect();
+      volumeBtn.style.left = rect.width / 2 + "px";
+      song.volume = 0.5;
+    });
+  </script>
 </body>
 </html>
