@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>.◞ ♱ ◟.</title>
+<title>welcome</title>
 <style>
 body, html {
   margin: 0;
@@ -14,27 +14,21 @@ body, html {
   align-items: center;
   background: #000;
   font-family: 'Arial', sans-serif;
-  cursor: default; /* only pointer on text */
+  cursor: default;
   overflow: hidden;
 }
 
 .welcome {
-  font-size: 0.8em;
+  font-size: 1.2em;
   position: relative;
   text-align: center;
   z-index: 1;
   color: #fff;
-  text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 8px #fff;
-  transition: text-shadow 0.3s ease;
-  cursor: pointer; /* pointer only on text */
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-/* Hover glow only for welcome text */
-.welcome:hover {
-  text-shadow: 0 0 4px #fff, 0 0 8px #fff, 0 0 16px #fff;
-}
-
-/* Optional pseudo-element for smooth halo */
+/* Pseudo-element for circular neon glow */
 .welcome::before {
   content: "welcome";
   position: absolute;
@@ -42,14 +36,19 @@ body, html {
   top: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  filter: blur(4px);
   opacity: 0.6;
+  filter: blur(12px); /* soft circular glow */
   z-index: -1;
   pointer-events: none;
 }
 
+/* Hover intensifies glow */
 .welcome:hover::before {
-  filter: blur(8px);
+  filter: blur(20px);
+}
+
+.welcome:hover {
+  color: #fff; /* keep text white on hover */
 }
 </style>
 </head>
@@ -60,11 +59,10 @@ body, html {
 <audio src="audio/song.mp3" autoplay loop></audio>
 
 <script>
-  function goToFriends() {
-    window.location.href = "friends/"; // This points to friends/index.html
-  }
+function goToFriends() {
+  window.location.href = "friends/"; // points to friends/index.html
+}
 </script>
 
 </body>
 </html>
-
