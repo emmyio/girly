@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>friends hub</title>
+  <title>friend hub</title>
   <style>
     /* Base */
     body, html {
@@ -58,6 +58,14 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 60px; /* spread cards farther apart */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .cards.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card {
@@ -130,6 +138,14 @@
       margin-top: 60px;
       gap: 10px;
       position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .volume-slider-container.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .volume-line {
@@ -153,6 +169,7 @@
       cursor: pointer;
       transition: all 0.2s ease;
     }
+
   </style>
 </head>
 <body>
@@ -248,8 +265,7 @@
         if (user.discord_status === "online") color = "white";
         if (user.discord_status === "idle") color = "lightgray";
         if (user.discord_status === "dnd") color = "darkred";
-        if (user.discord_status === "offline" || user.discord_status === "invisible") color
-        = "gray";
+        if (user.discord_status === "offline" || user.discord_status === "invisible") color = "gray";
         statusEl.style.backgroundColor = color;
       } catch(e) { console.log(e); }
     }
@@ -280,6 +296,12 @@
       const rect = volumeLine.getBoundingClientRect();
       volumeBtn.style.left = rect.width / 2 + "px";
       song.volume = 0.5;
+
+      // Fade-in animations
+      const cards = document.querySelector(".cards");
+      const volumeContainer = document.querySelector(".volume-slider-container");
+      setTimeout(() => cards.classList.add("show"), 200);
+      setTimeout(() => volumeContainer.classList.add("show"), 600);
     });
   </script>
 </body>
