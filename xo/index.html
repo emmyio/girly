@@ -18,7 +18,7 @@
     position: relative;
   }
 
-  /* Bleeding/ambient background */
+  /* Ambient glow background */
   body::before {
     content: "";
     position: fixed;
@@ -169,7 +169,6 @@
     cursor: pointer;
     transition: all 0.2s ease;
   }
-
 </style>
 </head>
 <body>
@@ -186,9 +185,9 @@
         <span class="status-dot" id="status-em"></span>
       </div>
       <div class="links">
+        <a href="https://youtube.com/@em-hi" target="_blank"><img src="../icons/youtube.png" alt="YouTube"></a>
         <a href="https://instagram.com/emqsn" target="_blank"><img src="../icons/instagram.png" alt="Instagram"></a>
         <a href="https://tiktok.com/@emmy" target="_blank"><img src="../icons/tiktok.png" alt="TikTok"></a>
-        <a href="https://youtube.com/@em-hi" target="_blank"><img src="../icons/youtube.png" alt="YouTube"></a>
       </div>
     </div>
 
@@ -200,8 +199,8 @@
         <span class="status-dot" id="status-tee"></span>
       </div>
       <div class="links">
-        <a href="https://tiktok.com/@ayotrist" target="_blank"><img src="../icons/tiktok.png" alt="TikTok"></a>
         <a href="https://instagram.com/tukihanna_" target="_blank"><img src="../icons/instagram.png" alt="Instagram"></a>
+        <a href="https://tiktok.com/@ayotrist" target="_blank"><img src="../icons/tiktok.png" alt="TikTok"></a>
       </div>
     </div>
 
@@ -227,6 +226,20 @@
       </div>
       <div class="links">
         <a href="https://instagram.com/ahmed._.benhessou" target="_blank"><img src="../icons/instagram.png" alt="Instagram"></a>
+        <a href="#" target="_blank"><img src="../icons/tiktok.png" alt="TikTok"></a>
+      </div>
+    </div>
+
+    <!-- chris -->
+    <div class="card">
+      <img class="avatar" id="avatar-chris" src="../icons/instagram.png" alt="chris">
+      <div class="name-status">
+        <span class="name">chris</span>
+        <span class="status-dot" id="status-chris"></span>
+      </div>
+      <div class="links">
+        <a href="https://instagram.com/queenshbh" target="_blank"><img src="../icons/instagram.png" alt="Instagram"></a>
+        <a href="https://tiktok.com/@siricentral" target="_blank"><img src="../icons/tiktok.png" alt="TikTok"></a>
       </div>
     </div>
   </div>
@@ -247,7 +260,8 @@
     {id: "325815288211963906", name: "em"},
     {id: "1297502058450259981", name: "tee"},
     {id: "1297465086553755649", name: "alex"},
-    {id: "1181302270344822844", name: "koala"}
+    {id: "1181302270344822844", name: "koala"},
+    {id: "926662219276615760", name: "chris"}
   ];
 
   async function loadStatus(friend) {
@@ -257,8 +271,10 @@
       if (!data.success) return;
 
       const user = data.data;
-      const avatarUrl = `https://cdn.discordapp.com/avatars/${friend.id}/${user.discord_user.avatar}.png?size=256`;
-      document.getElementById(`avatar-${friend.name}`).src = avatarUrl;
+      if (user.discord_user.avatar) {
+        const avatarUrl = `https://cdn.discordapp.com/avatars/${friend.id}/${user.discord_user.avatar}.png?size=256`;
+        document.getElementById(`avatar-${friend.name}`).src = avatarUrl;
+      }
 
       const statusEl = document.getElementById(`status-${friend.name}`);
       let color = "gray";
@@ -298,10 +314,8 @@
     song.volume = 0.5;
 
     // Fade-in animations
-    const cards = document.querySelector(".cards");
-    const volumeContainer = document.querySelector(".volume-slider-container");
-    setTimeout(() => cards.classList.add("show"), 200);
-    setTimeout(() => volumeContainer.classList.add("show"), 600);
+    document.querySelector(".cards").classList.add("show");
+    setTimeout(() => document.querySelector(".volume-slider-container").classList.add("show"), 400);
   });
 </script>
 </body>
